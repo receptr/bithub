@@ -20,11 +20,14 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-its'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
 end
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
