@@ -6,7 +6,18 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 
-ActiveRecord::Migration.maintain_test_schema!
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.library :rails
+    with.test_framework :rspec
+  end
+end
+
+begin
+  ActiveRecord::Migration.maintain_test_schema!
+rescue ActiveRecord::PendingMigrationError
+  `bin/rails db:migrate`
+end
 
 RSpec.configure do |config|
   config.filter_rails_from_backtrace!
