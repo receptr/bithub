@@ -23,6 +23,7 @@ rescue ActiveRecord::PendingMigrationError
 end
 
 RSpec.configure do |config|
+  config.include ActiveJob::TestHelper
   config.include FactoryGirl::Syntax::Methods
 
   config.filter_rails_from_backtrace!

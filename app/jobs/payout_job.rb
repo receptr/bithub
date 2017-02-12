@@ -2,6 +2,8 @@
 # services, otherwise we're going to email them and ask them for their Bitcoin
 # address and re-perform this job later on.
 class PayoutJob < ApplicationJob
+  queue_as :default
+
   # @param Merge [merge]
   def perform(merge)
     return if merge.amount.zero?
