@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.1'
+# Until Rails 5.0.2 is out.
+gem 'rails', github: 'rails', branch: '5-0-stable'
 
 gem 'pg', '~> 0.18'
 
